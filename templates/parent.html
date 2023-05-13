@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content%}
+<h1>{{ parent.firstname }} {{ parent.lastname }}</h1>
+<p>Email: {{ parent.email }}</p>
+<p>Phone: {{ parent.phone }}</p>
+<hr>
+<h2>Child 1:</h2>
+<p>First name: {{ parent.left_set.all.0.firstname }}</p>
+<p>Last name: {{ parent.left_set.all.0.lastname }}</p>
+<p>Email: {{ parent.left_set.all.0.email }}</p>
+<p>Phone: {{ parent.left_set.all.0.phone }}</p>
+<hr>
+{% if parent.right_set != '' %}
+<h2>Child 2:</h2>
+<p>First name: {{ parent.left_set.all.1.firstname }}</p>
+<p>Last name: {{ parent.left_set.all.1.lastname }}</p>
+<p>Email: {{ parent.left_set.all.1.email }}</p>
+<p>Phone: {{ parent.left_set.all.1.phone }}</p>
+{% endif %}
+{% endblock content%}

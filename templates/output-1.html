@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Parent List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Left First Name</th>
+        <th>Left Last Name</th>
+        <th>Left Email</th>
+        <th>Left Phone</th>
+        <th>Left City</th>
+        <th>Left State</th>
+        <th>Left Country</th>
+        <th>Left Referal</th>
+        <th>Left Date Created</th>
+        <th>Right First Name</th>
+        <th>Right Last Name</th>
+        <th>Right Email</th>
+        <th>Right Phone</th>
+        <th>Right City</th>
+        <th>Right State</th>
+        <th>Right Country</th>
+        <th>Right Referal</th>
+        <th>Right Date Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for parent in parents %}
+        <tr>
+          <td>{{ parent.left.firstname }}</td>
+          <td>{{ parent.left.lastname }}</td>
+          <td>{{ parent.left.email }}</td>
+          <td>{{ parent.left.phone }}</td>
+          <td>{{ parent.left.city }}</td>
+          <td>{{ parent.left.state }}</td>
+          <td>{{ parent.left.country }}</td>
+          <td>{{ parent.left.referal }}</td>
+          <td>{{ parent.left.date_created }}</td>
+          <td>{{ parent.right.firstname }}</td>
+          <td>{{ parent.right.lastname }}</td>
+          <td>{{ parent.right.email }}</td>
+          <td>{{ parent.right.phone }}</td>
+          <td>{{ parent.right.city }}</td>
+          <td>{{ parent.right.state }}</td>
+          <td>{{ parent.right.country }}</td>
+          <td>{{ parent.right.referal }}</td>
+          <td>{{ parent.right.date_created }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

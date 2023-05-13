@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="body genealogy-body genealogy-scroll">
+    <div class="genealogy-tree">
+        <ul>
+            <li>
+
+
+                <a href="javascript:void(0);">
+                    <div class="member-view-box">
+                        <a href="/reg">
+                            <div class="member-image">
+                                <img src="{% static 'assets/images/vector-users-icon.webp' %}" alt="Member">
+                                <div class="member-details">
+                                    <h4>{{user.username}}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </a>
+                {% for parent in parents %}
+                <ul class="active">
+                    <li>
+                        <a href="javascript:void(0);">
+                            <div class="member-view-box">
+                                <a href="/reg">
+                                    <div class="member-image">
+                                        <img src="{% static 'assets/images/vector-users-icon.webp' %}" alt="Member">
+
+                                        <div class="member-details">
+                                            <h4>{{ parent.left.firstname }}</h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <div class="member-view-box">
+                                <a href="/reg">
+                                    <div class="member-image">
+                                        <img src="{% static 'assets/images/vector-users-icon.webp' %}" alt="Member">
+                                        <div class="member-details">
+                                            <h4>{{ parent.right.firstname }}</h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </a>
+                    </li>
+                    
+                </ul>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.genealogy-tree ul').hide();
+        $('.genealogy-tree>ul').show();
+        $('.genealogy-tree ul.active').show();
+        $('.genealogy-tree li').on('click', function (e) {
+            var children = $(this).find('> ul');
+            if (children.is(":visible")) children.hide('fast').removeClass('active');
+            else children.show('fast').addClass('active');
+            e.stopPropagation();
+        });
+    });
+</script>
+
+
+{% endblock content %}
